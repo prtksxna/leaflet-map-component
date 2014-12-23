@@ -1,0 +1,106 @@
+<!--
+The `leaflet-rectangle` element represents a rectangle on the map and is used as
+a child element of the `leaflet-map` element.
+
+
+##### Example: Add Rectangles
+    <leaflet-map longitude="77.2" latitude="28.4" zoom="12">
+      <leaflet-rectangle topleft="[54.559322, -5.767822]" bottomright="[56.1210604, -3.021240]">
+        Rectangle
+      </leaflet-rectangle>
+    </leaflet-map>
+
+@element leaflet-rectangle
+@blurb Element for putting a rectangle on the map
+@status alpha
+@homepage http://prtksxna.github.io/leaflet-map-component/components/leaflet-map-component/
+-->
+
+<link rel="import" href="leaflet-import.html">
+
+<polymer-element name="leaflet-rectangle" attributes="topleft bottomright">
+  <template>
+    <style>
+      :host{ display: none; }
+    </style>
+  </template>
+  <script>
+   Polymer( 'leaflet-rectangle', {
+     /**
+      * A Leaflet rectangle object
+      *
+      * @property feature
+      * @type L.rectangle
+      * @default null
+      */
+     feature: null,
+
+     /**
+      * A Leaflet map object
+      *
+      * @property map
+      * @type L.map
+      * @default null
+      */
+     map: null,
+
+     publish: {
+       /**
+	* The rectangle's top-left bound
+	*
+	* @attribute topleft
+	* @type Array
+	* @default null
+	*/
+       topleft: { value: [], reflect: true },
+
+       /**
+	* The rectangle's bottom-right bound
+	*
+	* @attribute bottomright
+	* @type Array
+	* @default null
+	*/
+       bottomright: { value: [], reflect: true },
+     },
+
+     observe: {
+       toplet: 'updatePosition',
+       bottomright: 'updatePosition',
+     },
+
+     ready: function () {
+       this.mapReady();
+     },
+
+     mapChanged: function () {
+       this.mapReady();
+     },
+
+     mapReady: function () {
+       if ( this.topleft && this.bottomright && this.map ) {
+         this.feature = L.rectangle( [ this.topleft, this.bottomright ] );
+         this.feature.addTo( this.map );
+         this.contentChanged();
+       }
+     },
+
+     updatePosition: function () {
+       if ( this.feature && this.topleft != null && this.bottomright != null ) {
+         this.feature.setBounds(
+           L.latLngBounds(
+             L.latLng( this.topleft ),
+             L.latLng( this.bottomright )
+           )
+	 );
+       }
+     },
+
+     contentChanged: function () {
+       this.onMutation( this, this.contentChanged );
+       var content = this.innerHTML;
+       this.feature.bindPopup( content );
+     }
+   } );
+  </script>
+</polymer-element>
