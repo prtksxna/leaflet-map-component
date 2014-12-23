@@ -40,7 +40,7 @@ Also add it to the `sources` attribute of `core-component-page` tag in `index.ht
 
 ## Post Development
 
-If you've updated `demo.html` or `demo_files/` you'll have to regenerate the Github page for the repository. This is done using a flavor of [Polymer/tools](https://github.com/Polymer/tools). Clone [this fork](https://github.com/prtksxna/tools) of the Polymer tools in the `polymer-components` directory you might have [made earlier](#pre-decelopment) and checkout the `leaflet-map-component` branch.
+If you've updated `demo.html` or `demo_files/` you'll have to regenerate the Github page for the repository. This is done using a flavor of [Polymer/tools](https://github.com/Polymer/tools). Clone [this fork](https://github.com/prtksxna/tools) of the Polymer tools in the `polymer-components` directory you might have [made earlier](#pre-development) and checkout the `leaflet-map-component` branch.
 
 ```
 $ cd ..
