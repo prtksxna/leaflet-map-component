@@ -40,6 +40,12 @@ Import the main component and start creating your map:
   </body>
 ```
 
+## Contribute
+
+Want to contribute? Resolve an [issue](https://github.com/prtksxna/leaflet-map-component/issues) and send a [pull request](https://github.com/prtksxna/leaflet-map-component/pulls).
+
+Read the [quick guide](https://github.com/prtksxna/leaflet-map-component/blob/master/CONTRIBUTING.md) on how to start contributing.
+
 ##License
 
 MIT license - [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
