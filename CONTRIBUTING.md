@@ -39,3 +39,25 @@ Create a file in the root of the project, for example `leaflet-rectangle-compone
 Also add it to the `sources` attribute of `core-component-page` tag in `index.html` so that its documentation is generated. You must also make sure that it behaves well with the `fitToMarkersChanges` method of `<leaflet-map>`.
 
 ## Post Development
+
+If you've updated `demo.html` or `demo_files/` you'll have to regenerate the Github page for the repository. This is done using a flavor of [Polymer/tools](https://github.com/Polymer/tools). Clone [this fork](https://github.com/prtksxna/tools) of the Polymer tools in the `polymer-components` directory you might have [made earlier](#pre-decelopment) and checkout the `leaflet-map-component` branch.
+
+```
+$ cd ..
+$ pwd
+~/code/polymer-components
+$ git clone git@github.com:prtksxna/tools.git
+$ cd tools
+$ git checkout origin/leaflet-map-component
+```
+
+Now, create a `temp` directory inside `polymer-components/` and run `tools/bin/gp.sh`, passing it the repository's owner and  component's name.
+
+```
+$ cd ..
+$ mkdir temp
+$ cd temp
+$ ../tools/bin/gp.sh prtksxna leaflet-map-component
+```
+
+This will push an updated copy to the `gh-pages` branch.
