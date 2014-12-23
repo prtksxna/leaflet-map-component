@@ -26,7 +26,7 @@ $ python -m simpleHTTPServer
 
 ### Fixing an existing component
 
-Make sure to update documentation if you change an existing method.
+Make sure to update documentation if you change an existing method. Use [JSDoc](http://usejsdoc.org/about-getting-started.html) strings to add documentation.
 
 ### Adding a new element
 
