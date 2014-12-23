@@ -92,6 +92,11 @@ a child element of the `leaflet-map` element.
      mapReady: function () {
        if ( this.latitude && this.longitude && this.map ) {
          var hasIcon = ( Object.keys( this.icon ).length === 0 );
+
+         if ( hasIcon ) {
+           L.Icon.Default.imagePath = '../leaflet/dist/images';
+         }
+
          this.feature = L.marker( [this.latitude, this.longitude], {
            icon: ( hasIcon ) ? new L.Icon.Default() : new L.icon( this.icon )
          } );
