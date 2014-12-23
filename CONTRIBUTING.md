@@ -1,6 +1,6 @@
 # How to Contribute?
 
-## Setting up for Development
+## Pre-Development
 
 After cloning the repository you'll need to install its dependencies via [bower](http://bower.io/). And this component is a bower package itself its `.bowerrc` file sets the bower directory to `../`. To keep your file structure neat you can create a dedicated component folder where you can clone this repository and install its dependencies.
 
@@ -24,7 +24,7 @@ $ python -m simpleHTTPServer
 
 ## Development
 
-### Fixing an existing component
+### Updating an existing component
 
 Make sure to update documentation if you change an existing method. Use [JSDoc](http://usejsdoc.org/about-getting-started.html) strings to add documentation.
 
@@ -37,3 +37,5 @@ Create a file in the root of the project, for example `leaflet-rectangle-compone
 ```
 
 Also add it to the `sources` attribute of `core-component-page` tag in `index.html` so that its documentation is generated. You must also make sure that it behaves well with the `fitToMarkersChanges` method of `<leaflet-map>`.
+
+## Post Development
