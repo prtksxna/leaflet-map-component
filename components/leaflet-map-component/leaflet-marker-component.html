@@ -1,0 +1,121 @@
+<!--
+The `leaflet-marker` element represents a marker on the map and is used as
+a child element of the `leaflet-map` element.
+
+
+##### Example: Add markers
+    <leaflet-map longitude="77.2" latitude="28.4" zoom="12">
+      <leaflet-marker longitude="77.2" latitude="28.4">
+        Marker
+      </leaflet-marker>
+    </leaflet-map>
+
+@element leaflet-marker
+@blurb Element for putting a marker on the map
+@status alpha
+@homepage http://prtksxna.github.io/leaflet-map-component/components/leaflet-map-component/
+-->
+
+<link rel="import" href="leaflet-import.html">
+
+<polymer-element name="leaflet-marker" attributes="latitude longitude icon">
+  <template>
+    <style>
+     :host{ display: none; }
+    </style>
+  </template>
+  <script>
+   Polymer( 'leaflet-marker', {
+     /**
+      * A Leaflet marker object
+      *
+      * @property feature
+      * @type L.marker
+      * @default null
+      */
+     feature: null,
+
+     /**
+      * A Leaflet map object
+      *
+      * @property map
+      * @type L.map
+      * @default null
+      */
+     map: null,
+
+     /**
+      * The marker's icon. If nothing is defined the default
+      * leaflet icon is used by default. This is required to
+      * follow the [L.icon](http://leafletjs.com/reference.html#icon)
+      * options format.
+      *
+      * @attribute icon
+      * @type object
+      * @default null
+      */
+     icon: {},
+
+     publish: {
+       /**
+        * The marker's longitude coordinate
+        *
+        * @attribute longitude
+        * @type number
+        * @default null
+        */
+       longitude: { value: null, reflect: true },
+
+       /**
+        * The marker's latitude coordinate
+        *
+        * @attribute latitude
+        * @type number
+        * @default null
+        */
+       latitude: { value: null, reflect: true }
+     },
+
+     observe: {
+       latitude: 'updatePosition',
+       longitude: 'updatePosition'
+     },
+
+     ready: function () {
+       this.mapReady();
+     },
+
+     mapChanged: function () {
+       this.mapReady();
+     },
+
+     mapReady: function () {
+       if ( this.latitude && this.longitude && this.map ) {
+         var hasIcon = ( Object.keys( this.icon ).length === 0 );
+
+         if ( hasIcon ) {
+           L.Icon.Default.imagePath = '../leaflet/dist/images';
+         }
+
+         this.feature = L.marker( [this.latitude, this.longitude], {
+           icon: ( hasIcon ) ? new L.Icon.Default() : new L.icon( this.icon )
+         } );
+         this.feature.addTo( this.map );
+         this.contentChanged();
+       }
+     },
+
+     updatePosition: function () {
+       if ( this.feature && this.latitude != null && this.longitude != null ) {
+         this.feature.setLatLng( L.latLng( this.latitude, this.longitude ) );
+       }
+     },
+
+     contentChanged: function () {
+       this.onMutation( this, this.contentChanged );
+       var content = this.innerHTML;
+       this.feature.bindPopup( content );
+     }
+   } );
+  </script>
+</polymer-element>

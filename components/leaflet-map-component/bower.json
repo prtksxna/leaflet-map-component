@@ -1,0 +1,31 @@
+{
+  "name": "leaflet-map-component",
+  "version": "0.1.0",
+  "authors": [
+    "Prateek Saxena <prtksxna@gmail.com>"
+  ],
+  "description": "A polymer component to show a leaflet map",
+  "main": "leaflet-map-component.html",
+  "keywords": [
+    "polymer",
+    "web-component",
+    "web-components",
+    "osm",
+    "map",
+    "leaflet"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.io/prtksxna/leaflet-map-component",
+  "ignore": [
+    "**/.*",
+    "tests",
+    "demo_files",
+    "demo.html",
+    "index.html",
+    "CONTRIBUTING.md"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.3",
+    "leaflet": "~0.7.3"
+  }
+}

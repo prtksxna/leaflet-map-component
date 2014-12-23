@@ -1,0 +1,7 @@
+{
+  "name": "leaflet-map-component#gh-pages",
+  "private": true,
+  "dependencies": {
+    "leaflet-map-component": "prtksxna/leaflet-map-component#master"
+  }
+}
