@@ -177,6 +177,9 @@ The `leaflet-map` element renders a [Leaflet](http://leafletjs.com/) map.
          for( var i = 0, f; f = this.features[i]; i++ ) {
            if ( f.latitude && f.longitude ) {
              bounds.push( [ f.latitude, f.longitude ] );
+           } else if ( f.topleft && f.bottomright ) { // If it s a rectangle
+             bounds.push( f.topleft );
+             bounds.push( f.bottomright );
            }
          }
          if ( bounds.length > 0 ) {
