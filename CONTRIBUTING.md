@@ -20,3 +20,20 @@ $ pwd
 ~/code/polymer-components
 $ python -m simpleHTTPServer
 ```
+
+
+## Development
+
+### Fixing an existing component
+
+Make sure to update documentation if you change an existing method.
+
+### Adding a new element
+
+Create a file in the root of the project, for example `leaflet-rectangle-component.html`. You could also copy an existing file to get boilerplate code. If the element is going to be a child element of `<leaflet-map>` then you'll have to add it to the `select` attribute of the `<content>` tag in `leaflet-map-component.html`. After writing the new component import it at the top of the main `leaflet-map-component.html` file like so:
+
+```
+<link rel="import" href="leaflet-rectangle-component.html">
+```
+
+Also add it to the `sources` attribute of `core-component-page` tag in `index.html` so that its documentation is generated.
