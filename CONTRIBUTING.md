@@ -36,4 +36,4 @@ Create a file in the root of the project, for example `leaflet-rectangle-compone
 <link rel="import" href="leaflet-rectangle-component.html">
 ```
 
-Also add it to the `sources` attribute of `core-component-page` tag in `index.html` so that its documentation is generated.
+Also add it to the `sources` attribute of `core-component-page` tag in `index.html` so that its documentation is generated. You must also make sure that it behaves well with the `fitToMarkersChanges` method of `<leaflet-map>`.
